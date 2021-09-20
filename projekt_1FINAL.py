@@ -67,20 +67,15 @@ text_pocet_slov = len(ocistena_slova)
 
 # počet slov s prvním velkým písmenem
 text_pocatecni_velka = 0
-for word in ocistena_slova:
-    if word.istitle():
-        text_pocatecni_velka += 1
-
-#počet slov velkým písmenem
 text_velka_vsechny = 0
+text_mala_vsechny = 0
+
 for word in ocistena_slova:
     if word.isupper() and word.isalpha():
         text_velka_vsechny += 1
-
-# počet slov malými písmeny
-text_mala_vsechny = 0
-for word in ocistena_slova:
-    if word.islower() and word.isalpha():
+    elif word.istitle():
+        text_pocatecni_velka += 1
+    elif word.islower() and word.isalpha():
         text_mala_vsechny += 1
 
 # pocet cisel ve stringu jako celek
@@ -104,7 +99,6 @@ pocet_pismen = {}
 for znak in ocistena_slova:
     pocet_pismen.setdefault(delka_slova, len(znak))
     delka_slova += 1
-
 # přednastevení proměnných počtu písmen ve slovech
 pocet_1 = 0
 pocet_2 = 0
@@ -124,60 +118,30 @@ pocet_13 = 0
 for i in pocet_pismen:
     if pocet_pismen.get(i) == 1:
         pocet_1 += 1
-
-for i in pocet_pismen:
-    if pocet_pismen.get(i) == 2:
+    elif pocet_pismen.get(i) == 2:
         pocet_2 += 1
-
-for i in pocet_pismen:
-    if pocet_pismen.get(i) == 3:
+    elif pocet_pismen.get(i) == 3:
         pocet_3 += 1
-
-for i in pocet_pismen:
-    if pocet_pismen.get(i) == 4:
+    elif pocet_pismen.get(i) == 4:
         pocet_4 += 1
-
-for i in pocet_pismen:
-    if pocet_pismen.get(i) == 5:
+    elif pocet_pismen.get(i) == 5:
         pocet_5 += 1
-
-for i in pocet_pismen:
-    if pocet_pismen.get(i) == 6:
+    elif pocet_pismen.get(i) == 6:
         pocet_6 += 1
-
-for i in pocet_pismen:
-    if pocet_pismen.get(i) == 7:
+    elif pocet_pismen.get(i) == 7:
         pocet_7 += 1
-
-for i in pocet_pismen:
-    if pocet_pismen.get(i) == 8:
+    elif pocet_pismen.get(i) == 8:
         pocet_8 += 1
-
-for i in pocet_pismen:
-    if pocet_pismen.get(i) == 9:
+    elif pocet_pismen.get(i) == 9:
         pocet_9 += 1
-
-for i in pocet_pismen:
-    if pocet_pismen.get(i) == 10:
+    elif pocet_pismen.get(i) == 10:
         pocet_10 += 1
-
-for i in pocet_pismen:
-    if pocet_pismen.get(i) == 11:
+    elif pocet_pismen.get(i) == 11:
         pocet_11 += 1
-    else:
-        continue
-
-for i in pocet_pismen:
-    if pocet_pismen.get(i) == 12:
+    elif pocet_pismen.get(i) == 12:
         pocet_12 += 1
-    else:
-        continue
-
-for i in pocet_pismen:
-    if pocet_pismen.get(i) == 13:
+    elif pocet_pismen.get(i) == 13:
         pocet_13 += 1
-    else:
-        continue
 
 # vtvoření slovníku, ze kterého se bude vybírat graf
 final_slovnik = {"pocet_1": pocet_1, "pocet_2": pocet_2, "pocet_3": pocet_3, "pocet_4": pocet_4, "pocet_5": pocet_5, 
@@ -185,7 +149,7 @@ final_slovnik = {"pocet_1": pocet_1, "pocet_2": pocet_2, "pocet_3": pocet_3, "po
 "pocet_12": pocet_12, "pocet_13": pocet_13}
 
 print(pomlcky)
-print("LEN | OCCURENCES | NUMBER")
+print("LEN      | OCCURENCES        | NUMBER")
 print(pomlcky)
 
 # vytvoření grafu
@@ -193,4 +157,4 @@ for index, znak in enumerate(final_slovnik):
     if final_slovnik.get(znak) == 0:
         continue
     else:
-        print(index + 1, "x" * final_slovnik.get(znak), final_slovnik.get(znak))
+        print(index+1, final_slovnik.get(znak) * 'x', final_slovnik.get(znak))
